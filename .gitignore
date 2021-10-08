@@ -1,0 +1,15 @@
+/.bundle/
+/coverage/
+/doc/
+/log/*.log
+/pkg/
+/tmp/
+/spec/dummy/db/*.sqlite3
+/spec/dummy/db/*.sqlite3-*
+/spec/dummy/log/
+/spec/dummy/storage/
+/spec/dummy/tmp/
+/spec/tmp/
+.byebug_history
+.DS_Store
+Gemfile.lock

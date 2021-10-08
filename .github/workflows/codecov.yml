@@ -1,0 +1,27 @@
+name: Codecov
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/*.md'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  codecov:
+    runs-on: ubuntu-latest
+    env:
+      CODECOV: true
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby 2.7
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7
+    - name: Install gems
+      run: bundle install --jobs 4 --retry 3
+    - name: Run RuboCop
+      run: rake spec
