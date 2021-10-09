@@ -43,3 +43,27 @@ Getting started
 ---------------
 
 **Teamable** expects a `User` model to be present and authenticatable before being installed. It also expects your application to respond properly to `current_user` and `user_signed_in?`. An authentication gem like [Authenticatable](https://github.com/kiqr/authenticatable) is recommended, but this gem should also work great with [Devise](https://github.com/heartcombo/devise), other gems or a custom solution. 
+
+
+Contributing
+------------
+If you are interested in reporting/fixing issues and contributing directly to the code base, please see [CONTRIBUTING.md](CONTRIBUTING.md) for more information on what we're looking for and how to get started.
+
+Versioning
+----------
+This library aims to adhere to [Semantic Versioning 2.0.0](http://semver.org/). Violations
+of this scheme should be reported as bugs. Specifically, if a minor or patch
+version is released that breaks backward compatibility, that version should be
+immediately yanked and/or a new version should be immediately released that
+restores compatibility. Breaking changes to the public API will only be
+introduced with new major versions. As a result of this policy, you can (and
+should) specify a dependency on this gem using the [Pessimistic Version
+Constraint](http://guides.rubygems.org/patterns/#pessimistic-version-constraint) with two digits of precision. For example:
+
+```ruby
+gem "teamable", "~> 1.0"
+```
+
+License
+-------
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
