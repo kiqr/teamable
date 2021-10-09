@@ -20,6 +20,4 @@ Gem::Specification.new do |spec|
     "documentation_uri" => "https://github.com/kiqr/teamable/issues",
     "source_code_uri" => "https://github.com/kiqr/teamable"
   }
-
-  spec.add_dependency "authenticatable", "~> 1.1"
 end

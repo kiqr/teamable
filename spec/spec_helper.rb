@@ -15,6 +15,7 @@ require "dummy/application"
 Rails.application.initialize!
 
 require "rspec/rails"
+require "authenticatable"
 
 # Load support helpers
 Dir[Authenticatable::Engine.root.join("spec/support/**/*.rb")].sort.each { |f| require f }

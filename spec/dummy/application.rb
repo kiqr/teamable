@@ -21,7 +21,6 @@ require "action_mailer/railtie"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-require "authenticatable"
 
 module Dummy
   APP_ROOT = File.expand_path(".", __dir__)
