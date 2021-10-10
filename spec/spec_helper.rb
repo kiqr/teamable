@@ -18,12 +18,7 @@ require "rspec/rails"
 require "authenticatable"
 
 # Load support helpers
-Dir[Authenticatable::Engine.root.join("spec/support/**/*.rb")].sort.each { |f| require f }
-
-# Load factories
-# Dir["#{File.dirname(__FILE__)}/support/factories/**"].each do |f|
-#   load File.expand_path(f)
-# end
+Dir[Teamable::Engine.root.join("spec/support/**/*.rb")].sort.each { |f| require f }
 
 migrate_path = File.expand_path("dummy/db/migrate/", __dir__)
 

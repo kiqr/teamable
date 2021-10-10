@@ -44,6 +44,25 @@ Getting started
 
 **Teamable** expects a `User` model to be present and authenticatable before being installed. It also expects your application to respond properly to `current_user` and `user_signed_in?`. An authentication gem like [Authenticatable](https://github.com/kiqr/authenticatable) is recommended, but this gem should also work great with [Devise](https://github.com/heartcombo/devise), other gems or a custom solution. 
 
+#### Run the install generator
+
+Our next step is to run the install generator. To run the installer run the following command:
+
+```console
+$ rails g teamable:install
+```
+
+This will generate two models, `Member` & `Account` with configuration for teamable, migration files and `teamable` routes. It will also inject the `Teamable::Models::User` concern into your `User`-model. The output should be something similar to:
+
+```console
+foo@bar:~$ rails g teamable:install
+      insert  app/models/user.rb
+      create  app/models/account.rb
+      create  app/models/member.rb
+      create  db/migrate/20211010111722_teamable_create_accounts.rb
+      create  db/migrate/20211010111723_teamable_create_members.rb
+       route  teamable "organizations"
+```
 
 Contributing
 ------------

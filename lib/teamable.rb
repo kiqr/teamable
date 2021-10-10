@@ -3,8 +3,11 @@
 require "teamable/version"
 require "teamable/engine"
 
-# Teamable adds team/organization accounts to Authenticatable for Rails. All related modules,
-# classes and methods will be namespaced under the namespace 'Teamable':
+# Enable role based multi-user accounts (teams/organizations) in Rails.
 module Teamable
-  # Empty for now.
+  module Models
+    autoload :Account, "teamable/models/account"
+    autoload :Member, "teamable/models/member"
+    autoload :User, "teamable/models/user"
+  end
 end
