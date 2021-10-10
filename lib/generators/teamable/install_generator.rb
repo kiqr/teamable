@@ -36,7 +36,7 @@ module Teamable
     end
 
     def add_route
-      route 'teamable "organizations"'
+      route 'teamable "account"'
     end
 
     private

@@ -17,6 +17,7 @@ gem "codecov", require: false
 gem "factory_bot_rails", "~> 6.0"
 gem "faker", "~> 2.19"
 gem "generator_spec"
+gem "rails-controller-testing"
 gem "rspec-rails"
 gem "rubocop", require: false
 gem "rubocop-rails", require: false

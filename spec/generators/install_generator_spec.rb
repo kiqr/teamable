@@ -87,7 +87,7 @@ module Teamable
         expect(destination_root).to have_structure {
           directory "config" do
             file "routes.rb" do
-              contains 'teamable "organizations"'
+              contains 'teamable "account"'
             end
           end
         }

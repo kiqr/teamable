@@ -16,6 +16,7 @@ Rails.application.initialize!
 
 require "rspec/rails"
 require "authenticatable"
+require "authenticatable/rspec"
 
 # Load support helpers
 Dir[Teamable::Engine.root.join("spec/support/**/*.rb")].sort.each { |f| require f }

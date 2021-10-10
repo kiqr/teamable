@@ -5,7 +5,7 @@ require "spec_helper"
 module ActionDispatch
   module Routing
     describe Mapper, type: :request do
-      it { expect(new_account_path).to eq("/organizations/new") }
+      it { expect(setup_account_path).to eq("/account/setup") }
     end
   end
 end
