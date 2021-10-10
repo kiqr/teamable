@@ -8,10 +8,10 @@ module Teamable
       included do
         has_many :members
         has_many :users, through: :members
-        belongs_to :owner, class_name: "User"
 
         validates :name, presence: true
-        validates :billing_email, "valid_email_2/email": { mx: true }, presence: true
+        validates :billing_email, presence: true, uniqueness: true
+        validates_format_of :billing_email, with: Teamable.config.email_regexp
       end
     end
   end

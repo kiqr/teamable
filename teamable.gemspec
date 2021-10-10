@@ -20,4 +20,6 @@ Gem::Specification.new do |spec|
     "documentation_uri" => "https://github.com/kiqr/teamable/issues",
     "source_code_uri" => "https://github.com/kiqr/teamable"
   }
+
+  spec.add_dependency "dry-configurable", "~> 0.11.0"
 end

@@ -10,10 +10,8 @@ module Teamable
         belongs_to :account
 
         before_validation :set_owner_default_role, on: :create
-        before_validation :find_user_from_invitee_email, on: :create
-        validate :validate_membership_uniqueness, if: :user_id_changed?
         validates :role, presence: true
-        validates :invitee_email, "valid_email_2/email": { mx: true }, allow_blank: true
+        validates_format_of :invitee_email, with: Teamable.config.email_regexp, allow_blank: true
         validates_inclusion_of :role, in: proc { ::Member::AVAILABLE_ROLES }
       end
 
@@ -24,26 +22,11 @@ module Teamable
         role.capitalize
       end
 
-      def role?(str)
-        role.include? str
+      def role?(input)
+        role.include? input.to_s
       end
 
       private
-
-      # Search for a user by invitee email and check if
-      # it exists in the database and set it as user.
-      def find_user_from_invitee_email
-        return if invitee_email.nil?
-
-        self.user = ::User.find_by(email: invitee_email)
-        errors.add(:invitee_email, "is not a registered user") if user.nil?
-      end
-
-      def validate_membership_uniqueness
-        return unless ::Member.where(account: account, user: user).first
-
-        errors.add(:invitee_email, "is already a member")
-      end
 
       def set_owner_default_role
         self.role = ::Member::FIRST_USER_ROLE if role.nil?
