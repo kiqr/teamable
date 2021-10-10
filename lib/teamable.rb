@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "teamable/version"
+require "teamable/routes"
 require "teamable/engine"
 
 require "dry-configurable"
