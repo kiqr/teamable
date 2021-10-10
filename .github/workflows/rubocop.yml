@@ -21,5 +21,3 @@ jobs:
       run: bundle install --jobs 4 --retry 3
     - name: Run RuboCop
       run: rake rubocop
-    - name: Run erb_lint
-      run: rake erb_lint
