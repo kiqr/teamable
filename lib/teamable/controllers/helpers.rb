@@ -13,6 +13,13 @@ module Teamable
         end
       end
 
+      # Method references in Teamable::AccountsController#switch to redirect a user
+      # after they've switched to another account. You can override it in your
+      # ApplicationController to provide a custom url.
+      def after_account_switched_path
+        root_path
+      end
+
       # Raise Teamable::MissingAccountError unless account_selected? is true.
       def authenticate_account!
         return if teamable_controller?

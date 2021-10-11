@@ -2,6 +2,8 @@
 
 module Teamable
   class SetupController < TeamableController
+    skip_before_action :authenticate_account!, only: %i[new create]
+
     def new
       @account = current_user.accounts.new
     end

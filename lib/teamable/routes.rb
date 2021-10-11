@@ -22,6 +22,7 @@ module ActionDispatch
         resource :account, only: %i[index], path: "" do
           get :setup, to: "setup#new"
           post :setup, to: "setup#create"
+          patch ":id/switch", to: "accounts#switch", as: :switch
         end
       end
     end
