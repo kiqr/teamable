@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
-require "teamable/version"
+require "teamable/current"
 require "teamable/routes"
+require "teamable/version"
+
 require "teamable/engine"
 
 require "dry-configurable"
@@ -11,7 +13,8 @@ module Teamable
   extend Dry::Configurable
 
   module Controllers
-    autoload :Helpers, "teamable/controllers/helpers"
+    autoload :CurrentAccountHelper, "teamable/controllers/current_account_helper"
+    autoload :UrlHelpers, "teamable/controllers/url_helpers"
   end
 
   module Models
