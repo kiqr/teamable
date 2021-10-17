@@ -74,6 +74,17 @@ foo@bar:~$ rails g teamable:install
        route  teamable "organizations"
 ```
 
+Customization
+-------------
+
+#### Custom path scope
+Teamable ships with some default routes. If you want to change the path name for teamable routes, you can do it by changing the first argument passed to `teamable` in your `config/routes.rb`, like this:
+
+```ruby
+# config/routes.rb
+teamable "organizations" # Scope teamable urls by "/organizations" instead of "/account".
+```
+
 Contributing
 ------------
 If you are interested in reporting/fixing issues and contributing directly to the code base, please see [CONTRIBUTING.md](CONTRIBUTING.md) for more information on what we're looking for and how to get started.
