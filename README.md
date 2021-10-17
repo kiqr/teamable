@@ -44,7 +44,7 @@ Installation
 Add the following line to Gemfile:
 
 ```ruby
-gem "teamable", "~> 1.0"
+gem "teamable", github: "kiqr/teamable" # Use Github repo to use alpha release.
 ```
 
 and run `bundle install` from your terminal to install it.
