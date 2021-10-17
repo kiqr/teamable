@@ -3,7 +3,7 @@
 require "spec_helper"
 
 module Teamable
-  describe SetupController, type: :controller do
+  describe SetupController, type: :request do
     let(:user) { create(:user) }
 
     before { sign_in(user) }
@@ -13,9 +13,7 @@ module Teamable
     it { should be_a TeamableController }
 
     describe "GET /account/setup" do
-      before { get :new }
-
-      render_views
+      before { get "/account/setup" }
 
       it { expect(response).to render_template(:new) }
       it { expect(response).to have_http_status(:success) }
@@ -25,9 +23,7 @@ module Teamable
 
     # describe "POST /users/sign_up" do
     context "when inputs are empty" do
-      before { post :create, params: { account: { name: nil, billing_email: nil } } }
-
-      render_views
+      before { post "/account/setup", params: { account: { name: nil, billing_email: nil } } }
 
       it { expect(response).to render_template(:new) }
       it { expect(response).to have_http_status(:unprocessable_entity) }
@@ -39,7 +35,7 @@ module Teamable
       let(:build_account) { build(:account) }
 
       before do
-        post :create, params: {
+        post "/account/setup", params: {
           account: { name: build_account.name,
                      billing_email: build_account.billing_email }
         }

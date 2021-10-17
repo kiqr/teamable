@@ -2,11 +2,29 @@
 
 module Teamable
   class AccountsController < TeamableController
-    skip_before_action :authenticate_account!, only: %i[switch]
+    skip_before_action :authenticate_account!, only: %i[new create switch]
+
+    # GET /account/new
+    def new
+      @account = current_user.accounts.new
+    end
+
+    # POST /account
+    def create
+      @account = current_user.accounts.build(account_params)
+      @account.members.build(user: current_user)
+
+      if @account.save
+        update_teamable_session_id!(@account.id)
+        redirect_to root_path, notice: "success"
+      else
+        render :new, status: :unprocessable_entity
+      end
+    end
 
     def switch
-      _account = current_user.accounts.find(params[:id])
-      # session[:teamable_account_id] = account.id
+      account = current_user.accounts.find(params[:id])
+      update_teamable_session_id!(account.id)
       redirect_to after_account_switched_path
     end
 

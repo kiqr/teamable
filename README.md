@@ -9,6 +9,8 @@ Teamable enables role based multi-user accounts (teams/organizations). Teams are
 
 Every user can have one personal account they're admin of, which allows our code to work the same way whether we're adding resources privately for a user or for a team/organization. When a user signs in for the first time, they will be redirected to `new_account_path` and prompted to create their first personal or team account.
 
+### Team resources
+
 **We recommend** you to scope all user resources under accounts instead of users. For example, in an application containing projects, the `Project` model could be declared like this:
 
 ```ruby
@@ -23,6 +25,16 @@ or if you're combining teamable with [acts_as_tenant](https://github.com/ErwinM/
 ```ruby
 class Project < ApplicationRecord
   acts_as_tenant(:account)
+end
+```
+
+### Switching between accounts
+
+When building your customized account switcher, redirect your user to `switch_account_path`. 
+
+```ruby
+current_user.accounts.each do |account|
+ button_to account.name, switch_account_path(account), method: :patch
 end
 ```
 

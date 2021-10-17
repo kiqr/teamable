@@ -19,7 +19,7 @@ module ActionDispatch
       end
 
       def teamable_accounts(_options)
-        resource :account, only: %i[index], path: "" do
+        resource :account, only: %i[new create], path: "" do
           get :setup, to: "setup#new"
           post :setup, to: "setup#create"
           patch ":id/switch", to: "accounts#switch", as: :switch
