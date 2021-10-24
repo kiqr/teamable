@@ -5,6 +5,8 @@ module ActionDispatch
     class Mapper
       def teamable(team_label, options = {}, &block)
         options[:path] ||= team_label.to_s
+        options[:setup_controller] ||= "teamable/setup"
+        options[:accounts_controller] ||= "teamable/accounts"
 
         teamable_scope options do
           teamable_accounts(options)
@@ -15,14 +17,14 @@ module ActionDispatch
       protected
 
       def teamable_scope(options, &block)
-        scope options[:path], module: "teamable", &block
+        scope options[:path], &block
       end
 
-      def teamable_accounts(_options)
-        resource :account, only: %i[new create], path: "" do
-          get :setup, to: "setup#new"
-          post :setup, to: "setup#create"
-          patch ":id/switch", to: "accounts#switch", as: :switch
+      def teamable_accounts(options)
+        resource :account, only: %i[new create], controller: options[:accounts_controller], path: "" do
+          get :setup, controller: options[:setup_controller], action: "new"
+          post :setup, controller: options[:setup_controller], action: "create"
+          patch ":id/switch", action: "switch", as: :switch
         end
       end
     end
