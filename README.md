@@ -71,8 +71,20 @@ foo@bar:~$ rails g teamable:install
       create  app/models/member.rb
       create  db/migrate/20211010111722_teamable_create_accounts.rb
       create  db/migrate/20211010111723_teamable_create_members.rb
-       route  teamable "organizations"
+       route  teamable "account"
 ```
+
+#### Team authentication
+
+To set up a controller with team authentication, just add `before_action :authenticate_account!` to your controllers:
+
+```ruby
+class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
+  before_action :authenticate_account! # Add this row after authenticate_user!
+end
+```
+
 
 Customization
 -------------
