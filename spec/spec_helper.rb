@@ -15,8 +15,6 @@ require "dummy/application"
 Rails.application.initialize!
 
 require "rspec/rails"
-require "authenticatable"
-require "authenticatable/rspec"
 
 # Load support helpers
 Dir[Teamable::Engine.root.join("spec/support/**/*.rb")].sort.each { |f| require f }
@@ -38,6 +36,30 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.use_transactional_fixtures = true
   config.order = :random
+
+  config.include Devise::TestHelpers, type: :controller
+  config.include Warden::Test::Helpers, type: :request
+  config.include Devise::Test::IntegrationHelpers, type: :request
+end
+
+RSpec.shared_context "api request global before and after hooks" do
+  before(:each) do
+    Warden.test_mode!
+  end
+
+  after(:each) do
+    Warden.test_reset!
+  end
+end
+
+RSpec.shared_context "api request authentication helper methods" do
+  def sign_in(user)
+    login_as(user, scope: :user)
+  end
+
+  def sign_out
+    logout(:user)
+  end
 end
 
 # Configure shoulda

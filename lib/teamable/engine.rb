@@ -5,8 +5,8 @@ module Teamable
   class Engine < ::Rails::Engine
     initializer "teamable.setup" do
       # Make teamable helpers available in controllers.
-      ActionController::Base.include Teamable::Controllers::CurrentAccountHelper
-      ActionController::Base.include Teamable::Controllers::UrlHelpers
+      ActiveSupport.on_load(:action_controller) { include Teamable::Controllers::CurrentAccountHelper }
+      ActiveSupport.on_load(:action_controller) { include Teamable::Controllers::UrlHelpers }
     end
   end
 end

@@ -65,7 +65,7 @@ module Teamable
       # Finds last joined account if the user have any associated accounts.
       def fallback_account
         memberships = current_user.members
-        return nil if memberships.length.zero?
+        return nil if memberships.empty?
 
         memberships.last.account # Return last joined account.
       end

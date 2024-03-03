@@ -21,8 +21,8 @@ module Teamable
 
         it { expect(member.role).to eq(::Member::FIRST_USER_ROLE) }
         it { expect(member.role_name).to eq(::Member::FIRST_USER_ROLE.capitalize) }
-        it { expect(member.role?(:admin)).to eq(true) }
-        it { expect(member.role?("admin")).to eq(true) }
+        it { expect(member.role?(:admin)).to be(true) }
+        it { expect(member.role?("admin")).to be(true) }
       end
     end
   end

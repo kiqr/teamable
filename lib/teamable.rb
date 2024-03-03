@@ -27,10 +27,10 @@ module Teamable
 
   # The controller class that all Teamable controllers will inherit from.
   # Defaults to `ApplicationController`.
-  setting :parent_controller, "ApplicationController"
+  setting :parent_controller, default: "ApplicationController"
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  setting :email_regexp, /\A[^@\s]+@[^@\s]+\z/
+  setting :email_regexp, default: /\A[^@\s]+@[^@\s]+\z/
 end

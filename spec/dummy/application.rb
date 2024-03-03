@@ -10,6 +10,8 @@ require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 
+require "devise"
+
 # require "active_job/railtie"
 # require "active_storage/engine"
 # require "action_mailbox/engine"
@@ -46,6 +48,7 @@ module Dummy
     config.paths["app/models"] << "#{APP_ROOT}/app/models"
     config.paths["app/mailers"] << "#{APP_ROOT}/app/mailers"
     config.paths["app/views"] << "#{APP_ROOT}/app/views"
+    config.paths["config/initializers"] << "#{APP_ROOT}/config/initializers"
     config.paths["config/database"] = "#{APP_ROOT}/config/database.yml"
     config.paths.add "config/routes.rb", with: "#{APP_ROOT}/config/routes.rb"
 

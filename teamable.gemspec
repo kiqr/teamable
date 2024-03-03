@@ -18,8 +18,9 @@ Gem::Specification.new do |spec|
   spec.metadata = {
     "bug_tracker_uri" => "https://github.com/kiqr/teamable/issues",
     "documentation_uri" => "https://github.com/kiqr/teamable/issues",
-    "source_code_uri" => "https://github.com/kiqr/teamable"
+    "source_code_uri" => "https://github.com/kiqr/teamable",
+    "rubygems_mfa_required" => "true"
   }
 
-  spec.add_dependency "dry-configurable", "~> 0.11.0"
+  spec.add_dependency "dry-configurable", "~> 1.1.0"
 end

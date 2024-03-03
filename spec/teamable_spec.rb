@@ -3,7 +3,7 @@
 require "spec_helper"
 
 RSpec.describe Teamable do
-  it { expect(Teamable::VERSION).to be_truthy }
+  it { expect(described_class::VERSION).to be_truthy }
 
   describe "configuration default values" do
     it { expect(described_class.config.parent_controller).to eq("ApplicationController") }

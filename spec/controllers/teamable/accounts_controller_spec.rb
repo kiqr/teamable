@@ -8,7 +8,7 @@ module Teamable
 
     before { sign_in(user) }
 
-    it { expect(described_class.new.send(:teamable_controller?)).to eq(true) }
+    it { expect(described_class.new.send(:teamable_controller?)).to be(true) }
     it { should be_a Teamable.config.parent_controller.constantize }
     it { should be_a TeamableController }
 

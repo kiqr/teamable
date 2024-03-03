@@ -12,8 +12,8 @@ else
   gem "rails", RAILS_VERSION, require: false
 end
 
-gem "authenticatable"
 gem "codecov", require: false
+gem "devise", "~> 4.9"
 gem "factory_bot_rails", "~> 6.0"
 gem "faker", "~> 2.19"
 gem "generator_spec"
