@@ -16,7 +16,7 @@ module Teamable
 
       if @account.save
         update_teamable_session_id!(@account.id)
-        redirect_to root_path, notice: "success"
+        redirect_to root_path
       else
         render :new, status: :unprocessable_entity
       end

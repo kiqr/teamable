@@ -42,17 +42,17 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :request
 end
 
-RSpec.shared_context "api request global before and after hooks" do
-  before(:each) do
+RSpec.shared_context "with api request global before and after hooks" do
+  before do
     Warden.test_mode!
   end
 
-  after(:each) do
+  after do
     Warden.test_reset!
   end
 end
 
-RSpec.shared_context "api request authentication helper methods" do
+RSpec.shared_context "with api request authentication helper methods" do
   def sign_in(user)
     login_as(user, scope: :user)
   end

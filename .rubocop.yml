@@ -3,11 +3,13 @@ require:
   - rubocop-rails
 
 AllCops:
+  SuggestExtensions: false
   TargetRubyVersion: 2.6
   NewCops: enable
   Exclude:
     - '.simplecov'
     - 'spec/tmp/**/*'
+    - 'spec/dummy/**/*'
 
 Style/Documentation:
   Enabled: false
