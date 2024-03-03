@@ -16,8 +16,8 @@ module ActionDispatch
 
       protected
 
-      def teamable_scope(options, &block)
-        scope options[:path], &block
+      def teamable_scope(options, &)
+        scope(options[:path], &)
       end
 
       def teamable_accounts(options)

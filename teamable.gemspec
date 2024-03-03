@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary     = "Extension to enable teams for Authenticatable"
   spec.license     = "MIT"
 
-  spec.required_ruby_version = ">= 2.6"
+  spec.required_ruby_version = ">= 3.2"
 
   spec.files = Dir["{app,lib,config}/**/*", "LICENSE.md", "README.md"]
 

@@ -17,7 +17,7 @@ Rails.application.initialize!
 require "rspec/rails"
 
 # Load support helpers
-Dir[Teamable::Engine.root.join("spec/support/**/*.rb")].sort.each { |f| require f }
+Dir[Teamable::Engine.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 migrate_path = File.expand_path("dummy/db/migrate/", __dir__)
 
