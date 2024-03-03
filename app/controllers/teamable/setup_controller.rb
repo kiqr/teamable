@@ -4,7 +4,7 @@ module Teamable
   class SetupController < TeamableController
     # GET /account/setup
     def new
-      @account = current_user.accounts.new
+      @account = current_user.accounts.new(billing_email: current_user.email)
     end
 
     # POST /account/setup
