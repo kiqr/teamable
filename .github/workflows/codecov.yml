@@ -17,10 +17,10 @@ jobs:
       CODECOV: true
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby 2.7
+    - name: Set up Ruby 3.2
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.7
+        ruby-version: 3.2
     - name: Install gems
       run: bundle install --jobs 4 --retry 3
     - name: Run RuboCop
