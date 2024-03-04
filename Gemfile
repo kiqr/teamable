@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 gemspec
 
-RAILS_VERSION = ENV.fetch("RAILS_VERSION", "~> 6.1.0")
+RAILS_VERSION = ENV.fetch("RAILS_VERSION", "~> 7.1.0")
 
 if RAILS_VERSION == "master"
   gem "rails", github: "rails/rails", require: false
@@ -14,8 +14,8 @@ end
 
 gem "codecov", require: false
 gem "devise", "~> 4.9"
-gem "factory_bot_rails", "~> 6.0"
-gem "faker", "~> 2.19"
+gem "factory_bot_rails"
+gem "faker"
 gem "generator_spec"
 gem "rails-controller-testing"
 gem "rspec-rails"

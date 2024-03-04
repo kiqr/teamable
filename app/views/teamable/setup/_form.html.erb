@@ -1,7 +1,0 @@
-<%= form_for @account, url: setup_account_path, method: :post do |f| %>
-  <%= render 'teamable/shared/errors', resource: @account %>
-
-  <%= f.text_field :name, placeholder: "Account name" %><br>
-  <%= f.text_field :billing_email, placeholder: "Billing email" %><br>
-  <%= f.submit "Create account" %>
-<% end %>
