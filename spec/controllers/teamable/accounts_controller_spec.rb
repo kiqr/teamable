@@ -25,17 +25,15 @@ module Teamable
       it { expect(response).to render_template(:new) }
       it { expect(response).to have_http_status(:success) }
       it { expect(response.body).to match(/account\[name\]/im) }
-      it { expect(response.body).to match(/account\[billing_email\]/im) }
     end
 
     # describe "POST /users/sign_up" do
     context "when inputs are empty" do
-      before { post "/account", params: { account: { name: nil, billing_email: nil } } }
+      before { post "/account", params: { account: { name: nil } } }
 
       it { expect(response).to render_template(:new) }
       it { expect(response).to have_http_status(:unprocessable_entity) }
       it { expect(response.body).to match(/Name can&#39;t be blank/im) }
-      it { expect(response.body).to match(/Billing email can&#39;t be blank/im) }
     end
 
     context "when inputs are valid" do
@@ -43,8 +41,7 @@ module Teamable
 
       before do
         post "/account", params: {
-          account: { name: build_account.name,
-                     billing_email: build_account.billing_email }
+          account: { name: build_account.name }
         }
       end
 

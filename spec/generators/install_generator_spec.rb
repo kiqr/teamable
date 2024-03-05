@@ -54,6 +54,9 @@ module Teamable
                 contains "AVAILABLE_ROLES = "
                 contains "FIRST_USER_ROLE = "
               end
+              file "user.rb" do
+                contains "include Teamable::Models::User"
+              end
             end
           end
         }
@@ -68,7 +71,7 @@ module Teamable
               migration "teamable_create_accounts" do
                 contains "class TeamableCreateAccounts"
                 contains "t.string :name, null: false"
-                contains "t.string :billing_email, null: false"
+                contains "t.boolean :personal_account, default: false"
               end
               migration "teamable_create_members" do
                 contains "class TeamableCreateMembers"

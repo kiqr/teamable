@@ -10,8 +10,6 @@ module Teamable
         has_many :users, through: :members
 
         validates :name, presence: true
-        validates :billing_email, presence: true, uniqueness: true
-        validates_format_of :billing_email, with: Teamable.config.email_regexp
       end
     end
   end

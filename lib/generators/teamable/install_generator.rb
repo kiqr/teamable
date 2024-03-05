@@ -33,6 +33,7 @@ module Teamable
     def generate_migrations
       migration_template "migrations/account.tt", "#{db_migrate_path}/teamable_create_accounts.rb"
       migration_template "migrations/member.tt", "#{db_migrate_path}/teamable_create_members.rb"
+      migration_template "migrations/user.tt", "#{db_migrate_path}/teamable_add_personal_account_to_users.rb"
     end
 
     def add_route

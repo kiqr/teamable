@@ -4,17 +4,20 @@ module Teamable
   class SetupController < TeamableController
     # GET /account/setup
     def new
-      @account = current_user.accounts.new(billing_email: current_user.email)
+      @account = current_user.build_personal_account(
+        personal_account: true
+      )
     end
 
     # POST /account/setup
     def create
-      @account = current_user.accounts.build(account_params)
+      @account = current_user.build_personal_account(account_params)
+      @account.personal_account = true
       @account.members.build(user: current_user)
 
       if @account.save
         update_teamable_session_id!(@account.id)
-        redirect_to root_path, notice: "#{@account.name} was setup successfully!"
+        redirect_to root_path, notice: "Your account was setup successfully!"
       else
         render :new, status: :unprocessable_entity
       end
@@ -24,7 +27,7 @@ module Teamable
 
     # Only allow a list of trusted parameters through.
     def account_params
-      params.require(:account).permit(:name, :billing_email)
+      params.require(:account).permit(:name)
     end
   end
 end
