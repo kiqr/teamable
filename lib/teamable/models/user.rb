@@ -10,7 +10,7 @@ module Teamable
         has_many :accounts, through: :members
 
         has_many   :teams, -> { where(personal_account: false) }, through: :account_users, source: :account
-        belongs_to :personal_account, class_name: "Account"
+        belongs_to :personal_account, class_name: "Account", optional: true
       end
     end
   end
