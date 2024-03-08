@@ -25,7 +25,7 @@ module Teamable
     def switch
       account = current_user.accounts.find(params[:id])
       update_teamable_session_id!(account.id)
-      redirect_to after_account_switched_path
+      redirect_to after_account_switched_path(account)
     end
 
     private
