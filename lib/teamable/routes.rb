@@ -3,8 +3,8 @@
 module ActionDispatch
   module Routing
     class Mapper
-      def teamable(team_label, options = {}, &block)
-        options[:path] ||= team_label.to_s
+      def teamable(teamable_path = nil, options = {}, &block)
+        options[:path] = teamable_path || "team"
         options[:setup_controller] ||= "teamable/setup"
         options[:accounts_controller] ||= "teamable/accounts"
 
