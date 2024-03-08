@@ -24,7 +24,7 @@ module ActionDispatch
 
       def teamable_settings(options)
         resource :account, only: %i[new create], controller: options[:accounts_controller], path: options[:path].to_s do
-          patch ":id/switch", action: "switch", as: :switch
+          patch ":account_id/switch", action: "switch", as: :switch
         end
       end
     end

@@ -23,7 +23,7 @@ module Teamable
       before { patch "/account/#{user.personal_account.to_param}/switch" }
 
       it { expect(response).to have_http_status(:redirect) }
-      it { expect(response).to redirect_to(root_path) }
+      it { expect(response).to redirect_to(root_path(account_id: nil)) }
     end
 
     describe "GET /account/setup" do
