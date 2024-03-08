@@ -12,6 +12,10 @@ module Teamable
         has_many   :teams, -> { where(personal_account: false) }, through: :account_users, source: :account
         belongs_to :personal_account, class_name: "Account", optional: true
       end
+
+      def personal_account?
+        !!personal_account
+      end
     end
   end
 end

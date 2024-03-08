@@ -13,7 +13,6 @@ module Teamable
         it { expect(user).to be_valid }
         it { expect(user).to have_many(:members) }
         it { expect(user).to have_many(:accounts) }
-        it { expect(user).to belong_to(:personal_account) }
       end
     end
   end

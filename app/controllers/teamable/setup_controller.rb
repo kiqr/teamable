@@ -16,6 +16,7 @@ module Teamable
       @account.members.build(user: current_user)
 
       if @account.save
+        current_user.update(personal_account: @account)
         update_teamable_session_id!(@account.id)
         redirect_to root_path, notice: "Your account was setup successfully!"
       else
