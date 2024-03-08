@@ -7,7 +7,7 @@ Teamable
 
 Teamable enables role based multi-user accounts (teams/organizations). Teams are represented by the `Account` model. An account can have multiple users associated with it and a user can have multiple accounts. You can think of accounts as a common name for **teams** or **organizations**.
 
-Every user can have one personal account they're admin of, which allows our code to work the same way whether we're adding resources privately for a user or for a team/organization. When a user signs in for the first time, they will be redirected to `new_account_path` and prompted to create their first personal or team account.
+Every user can have one personal account they're admin of, which allows our code to work the same way whether we're adding resources privately for a user or for a team/organization. When a user signs in for the first time, they will be redirected to `setup_personal_account_path` and prompted to create their personal account.
 
 ### Team resources
 
@@ -76,18 +76,27 @@ foo@bar:~$ rails g teamable:install
 
 #### Team authentication
 
-To set up a controller with team authentication, just add `before_action :authenticate_account!` to your controllers:
+To set up a controller with team authentication, just add `before_action :authenticate_account!` to your controllers. If you're using Devise as your authentication gem, you should add `unless: :devise_controller?` to prevent redirects from Devise routes (for example password settings or sign out).
 
 ```ruby
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-  before_action :authenticate_account! # Add this row after authenticate_user!
+  before_action :authenticate_account!, unless: :devise_controller? # Add this row after authenticate_user!
 end
 ```
 
 
-Customization
--------------
+Routes
+------
+
+#### Scoped/prefixed routes
+Teamable finds the current account by parsing the `account_id` param. If none is set it will use the personal account. Define the routes for your application inside the `teamable` block and they will automatically be prefixed with `/team/<team_id>` if the user is signed in to a team account.
+
+```ruby
+teamable "account" do
+  root "dashboard#show"
+end
+```
 
 #### Custom path scope
 Teamable ships with some default routes. If you want to change the path name for teamable routes, you can do it by changing the first argument passed to `teamable` in your `config/routes.rb`, like this:
