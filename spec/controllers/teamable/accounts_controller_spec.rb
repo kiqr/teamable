@@ -12,8 +12,15 @@ module Teamable
     it { should be_a Teamable.config.parent_controller.constantize }
     it { should be_a TeamableController }
 
-    describe "PATCH /account/:id/switch" do
-      before { patch "/account/#{user.accounts.first.id}/switch" }
+    describe "Switch to team account" do
+      before { patch "/account/#{user.accounts.first.to_param}/switch" }
+
+      it { expect(response).to have_http_status(:redirect) }
+      it { expect(response).to redirect_to(root_path(account_id: user.accounts.first.public_uid)) }
+    end
+
+    describe "Switch to personal account" do
+      before { patch "/account/#{user.personal_account.to_param}/switch" }
 
       it { expect(response).to have_http_status(:redirect) }
       it { expect(response).to redirect_to(root_path) }
@@ -46,7 +53,7 @@ module Teamable
       end
 
       it { expect(response).to have_http_status(:found) }
-      it { expect(response).to redirect_to("/") }
+      it { expect(response).to redirect_to("/account/#{user.accounts.last.to_param}") }
     end
   end
 end

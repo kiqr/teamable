@@ -16,7 +16,7 @@ module Teamable
         end
 
         rescue_from Teamable::MissingAccountError do
-          redirect_to setup_account_path
+          redirect_to setup_personal_account_path
         end
       end
 
@@ -38,13 +38,6 @@ module Teamable
         !!current_account
       end
 
-      # Store an account id in a session variable.
-      # Warning: this does not validate that the current_user
-      # actually is a member of the specified account.
-      def update_teamable_session_id!(account_id)
-        session[:teamable_account_id] = account_id
-      end
-
       private
 
       # Load current account from Account model and store it
@@ -52,14 +45,14 @@ module Teamable
       def load_current_account
         return unless user_signed_in?
 
-        Teamable::Current.account ||= account_from_session || fallback_account || nil
+        Teamable::Current.account ||= account_from_params || current_user.personal_account || nil
       end
 
       # Try to load current account using session[:teamable_account_id]
-      def account_from_session
-        return if session[:teamable_account_id].blank?
+      def account_from_params
+        return if params[:account_id].blank?
 
-        current_user.accounts.find_by(id: session[:teamable_account_id])
+        current_user.accounts.find_puid(params[:account_id])
       end
 
       # Finds last joined account if the user have any associated accounts.

@@ -15,16 +15,14 @@ module Teamable
       @account.members.build(user: current_user)
 
       if @account.save
-        update_teamable_session_id!(@account.id)
-        redirect_to root_path
+        redirect_to root_path(account_id: @account)
       else
         render :new, status: :unprocessable_entity
       end
     end
 
     def switch
-      account = current_user.accounts.find(params[:id])
-      update_teamable_session_id!(account.id)
+      account = current_user.accounts.find_puid!(params[:id])
       redirect_to after_account_switched_path(account)
     end
 

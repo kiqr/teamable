@@ -23,4 +23,5 @@ Gem::Specification.new do |spec|
   }
 
   spec.add_dependency "dry-configurable", "~> 1.1.0"
+  spec.add_dependency "public_uid", "~> 2.2.0"
 end

@@ -8,22 +8,22 @@ module ActionDispatch
         options[:setup_controller] ||= "teamable/setup"
         options[:accounts_controller] ||= "teamable/accounts"
 
-        teamable_scope options do
-          teamable_accounts(options)
+        resource :personal_account, only: %i[], path: "onboarding" do
+          get :setup, controller: options[:setup_controller], action: "new"
+          post :setup, controller: options[:setup_controller], action: "create"
+        end
+
+        teamable_settings(options)
+
+        scope "(/#{options[:path]}/:account_id)", account: %r{[^/]+} do
           yield block if block_given?
         end
       end
 
-      protected
+      private
 
-      def teamable_scope(options, &)
-        scope(options[:path], &)
-      end
-
-      def teamable_accounts(options)
-        resource :account, only: %i[new create], controller: options[:accounts_controller], path: "" do
-          get :setup, controller: options[:setup_controller], action: "new"
-          post :setup, controller: options[:setup_controller], action: "create"
+      def teamable_settings(options)
+        resource :account, only: %i[new create], controller: options[:accounts_controller], path: options[:path].to_s do
           patch ":id/switch", action: "switch", as: :switch
         end
       end

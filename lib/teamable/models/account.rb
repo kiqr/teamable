@@ -4,6 +4,7 @@ module Teamable
   module Models
     module Account
       extend ActiveSupport::Concern
+      include PublicUid::ModelConcern
 
       included do
         has_many :members

@@ -7,6 +7,7 @@ require "teamable/version"
 require "teamable/engine"
 
 require "dry-configurable"
+require "public_uid"
 
 # Enable role based multi-user accounts (teams/organizations) in Rails.
 module Teamable

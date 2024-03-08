@@ -12,8 +12,8 @@ module Teamable
     it { should be_a Teamable.config.parent_controller.constantize }
     it { should be_a TeamableController }
 
-    describe "GET /account/setup" do
-      before { get "/account/setup" }
+    describe "GET /onboarding/setup" do
+      before { get "/onboarding/setup" }
 
       it { expect(response).to render_template(:new) }
       it { expect(response).to have_http_status(:success) }
@@ -22,7 +22,7 @@ module Teamable
 
     # describe "POST /users/sign_up" do
     context "when inputs are empty" do
-      before { post "/account/setup", params: { account: { name: nil } } }
+      before { post "/onboarding/setup", params: { account: { name: nil } } }
 
       it { expect(response).to render_template(:new) }
       it { expect(response).to have_http_status(:unprocessable_entity) }
@@ -33,7 +33,7 @@ module Teamable
       let(:build_account) { build(:account) }
 
       before do
-        post "/account/setup", params: {
+        post "/onboarding/setup", params: {
           account: { name: build_account.name }
         }
       end

@@ -9,15 +9,25 @@ module Teamable
 
       it { should be_a ActiveSupport::Concern }
 
-      context "when session id is set", type: :request do
+      context "when root, use personal account", type: :request do
         before do
           sign_in(user)
-          patch "/account/#{user.accounts.first.id}/switch"
           get "/"
         end
 
         describe "#account_from_session" do
-          it { expect(@controller.send(:account_from_session)).to eq(user.accounts.first) }
+          it { expect(@controller.send(:current_account)).to eq(user.personal_account) }
+        end
+      end
+
+      context "when prefixed path, use account id", type: :request do
+        before do
+          sign_in(user)
+          get "/account/#{user.accounts.first.to_param}"
+        end
+
+        describe "#account_from_session" do
+          it { expect(@controller.send(:current_account)).to eq(user.accounts.first) }
         end
       end
     end
