@@ -34,7 +34,7 @@ When building your customized account switcher, redirect your user to `switch_ac
 
 ```ruby
 current_user.accounts.each do |account|
- button_to account.name, switch_account_path(account), method: :patch
+  button_to account.name, switch_account_path(account), method: :patch
 end
 ```
 
@@ -44,7 +44,7 @@ Installation
 Add the following line to Gemfile:
 
 ```ruby
-gem "teamable", github: "kiqr/teamable" # Use Github repo to use alpha release.
+gem "teamable", "~> 0.2.0"
 ```
 
 and run `bundle install` from your terminal to install it.
@@ -122,7 +122,7 @@ should) specify a dependency on this gem using the [Pessimistic Version
 Constraint](http://guides.rubygems.org/patterns/#pessimistic-version-constraint) with two digits of precision. For example:
 
 ```ruby
-gem "teamable", "~> 1.0"
+gem "teamable", "~> 0.2.0"
 ```
 
 License
