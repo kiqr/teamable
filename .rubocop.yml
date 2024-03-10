@@ -34,6 +34,9 @@ Metrics/MethodLength:
 Rails/DynamicFindBy:
   Enabled: false
 
+Rails/I18nLocaleTexts:
+  Enabled: false
+
 Metrics/BlockLength:
   Exclude: 
     - 'spec/**/*'
