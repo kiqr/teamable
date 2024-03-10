@@ -43,9 +43,7 @@ module Teamable
       # Load current account from Account model and store it
       # in the Teamable::Current singleton.
       def load_current_account
-        return unless user_signed_in?
-
-        Teamable::Current.account ||= account_from_params || current_user.personal_account || nil
+        Teamable::Current.account ||= account_from_params || account_from_personal_account || nil
       end
 
       # Try to load current account using session[:teamable_account_id]
@@ -55,12 +53,11 @@ module Teamable
         current_user.accounts.find_puid(params[:account_id])
       end
 
-      # Finds last joined account if the user have any associated accounts.
-      def fallback_account
-        memberships = current_user.members
-        return nil if memberships.empty?
+      # Try to load current account using current_user.personal_account
+      def account_from_personal_account
+        return unless defined?(current_user)
 
-        memberships.last.account # Return last joined account.
+        current_user.personal_account
       end
 
       # Check if the current controller is a TeamableController
