@@ -30,7 +30,7 @@ module Dummy
   class Application < Rails::Application
     config.load_defaults Rails::VERSION::STRING.to_f
 
-    config.action_mailer.default_url_options = { host: "dummy.example.com" }
+    config.action_mailer.default_url_options = {host: "dummy.example.com"}
     config.action_mailer.delivery_method = :test
 
     config.action_controller.allow_forgery_protection = false

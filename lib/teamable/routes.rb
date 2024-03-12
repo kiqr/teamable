@@ -14,7 +14,7 @@ module ActionDispatch
         teamable_settings(options)
 
         scope "(/#{options[:path]}/:account_id)", account_id: %r{[^/]+} do
-          yield block if block_given?
+          yield block if block
         end
       end
 

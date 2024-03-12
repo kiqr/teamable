@@ -36,7 +36,7 @@ module Teamable
 
     # describe "POST /users/sign_up" do
     context "when inputs are empty" do
-      before { post "/account", params: { account: { name: nil } } }
+      before { post "/account", params: {account: {name: nil}} }
 
       it { expect(response).to render_template(:new) }
       it { expect(response).to have_http_status(:unprocessable_entity) }
@@ -48,7 +48,7 @@ module Teamable
 
       before do
         post "/account", params: {
-          account: { name: build_account.name }
+          account: {name: build_account.name}
         }
       end
 

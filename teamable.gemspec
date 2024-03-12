@@ -3,13 +3,13 @@
 require_relative "lib/teamable/version"
 
 Gem::Specification.new do |spec|
-  spec.name        = "teamable"
-  spec.version     = Teamable::VERSION
-  spec.authors     = ["Rasmus Kjellberg", "KIQR"]
-  spec.email       = "hello@kiqr.dev"
-  spec.homepage    = "https://github.com/kiqr/teamable"
-  spec.summary     = "Extension to enable teams for Authenticatable"
-  spec.license     = "MIT"
+  spec.name = "teamable"
+  spec.version = Teamable::VERSION
+  spec.authors = ["Rasmus Kjellberg", "KIQR"]
+  spec.email = "hello@kiqr.dev"
+  spec.homepage = "https://github.com/kiqr/teamable"
+  spec.summary = "Extension to enable teams for Authenticatable"
+  spec.license = "MIT"
 
   spec.required_ruby_version = ">= 3.2"
 
