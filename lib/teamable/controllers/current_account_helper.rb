@@ -55,9 +55,9 @@ module Teamable
 
       # Try to load current account using current_user.personal_account
       def account_from_personal_account
-        return unless defined?(current_user)
+        return unless defined?(current_user) && !current_user.nil?
 
-        current_user.personal_account
+        current_user&.personal_account
       end
 
       # Check if the current controller is a TeamableController
