@@ -14,6 +14,8 @@ module ActionDispatch
         teamable_settings(options)
 
         scope "(/#{options[:path]}/:account_id)", account_id: %r{[^/]+} do
+          get "settings/profile", controller: options[:accounts_controller], action: "edit", as: :edit_account
+          patch "settings/profile", controller: options[:accounts_controller], action: "update", as: :update_account
           yield block if block
         end
       end
