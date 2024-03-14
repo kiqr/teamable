@@ -44,7 +44,7 @@ module Teamable
       # Use current_account instead of params[:account_id] since the param is not present for personal accounts.
       # We still want to fetch the account again to make sure it's separated from current_account used on
       # other places in the app, for example in the toolbar.
-      @account = current_user.accounts.find(current_account.id)
+      @account = current_user.accounts.find(current_account&.id)
     end
 
     # Only allow a list of trusted parameters through.
