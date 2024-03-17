@@ -16,7 +16,7 @@ module Teamable
       @account.members.build(user: current_user)
 
       if @account.save
-        redirect_to root_path(account_id: @account)
+        redirect_to after_account_switched_path(@account)
       else
         render :new, status: :unprocessable_entity
       end

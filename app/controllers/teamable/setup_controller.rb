@@ -17,7 +17,7 @@ module Teamable
 
       if @account.save
         current_user.update(personal_account: @account)
-        redirect_to root_path, notice: "Your account was setup successfully!"
+        redirect_to after_account_switched_path(@account), notice: "Your account was setup successfully!"
       else
         render :new, status: :unprocessable_entity
       end
